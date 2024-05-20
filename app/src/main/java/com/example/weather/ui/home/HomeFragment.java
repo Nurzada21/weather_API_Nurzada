@@ -1,6 +1,5 @@
 package com.example.weather.ui.home;
 
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +18,7 @@ import com.example.weather.models.Clouds;
 import com.example.weather.models.Main;
 import com.example.weather.models.Model;
 import com.example.weather.models.Sys;
-import com.example.weather.models.Wind;
+import com.example.weather.models.wind;
 import com.example.weather.remote_data.RetrofitBuilder;
 
 
@@ -65,7 +64,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<Model> call, Response<Model> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Main main_model = response.body().getModel();
-                    Wind wind_model = response.body().getWind_model();
+                    wind wind_model = response.body().getWind_model();
                     Clouds clouds_model = response.body().getClouds_model();
                     Sys sys_model = response.body().getSys_model();
 
@@ -78,7 +77,7 @@ public class HomeFragment extends Fragment {
                     tempMinimal = makeFromFaringate(tempMin);
 
 
-                    binding.tempMain.setText(String.valueOf(temperature) + "°C");
+                    binding.tempC.setText(String.valueOf(temperature) + "°C");
                     if(temperature<=14){
                         setNoHotWeather();
                     }
@@ -94,7 +93,7 @@ public class HomeFragment extends Fragment {
                     binding.pressure.setText(main_model.getPressure() + "\nmBar");
 
                     binding.wind.setText(wind_model.getSpeed() + " m/s");
-                    binding.cloudy.setText(clouds_model.getAll() + " %");
+                    binding.cloud.setText(clouds_model.getAll() + " %");
 
                     binding.sunrise.setText(String.valueOf(getCurrDateTime(sys_model.getSunrise())));
                     binding.sunset.setText(String.valueOf(getCurrDateTime(sys_model.getSunset())));
@@ -166,7 +165,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(Call<Model> call, @NonNull Response<Model> response) {
                         Main main_model = response.body().getModel();
-                        Wind wind_model = response.body().getWind_model();
+                        wind wind_model = response.body().getWind_model();
                         Clouds clouds_model = response.body().getClouds_model();
                         Sys sys_model = response.body().getSys_model();
 
@@ -181,7 +180,7 @@ public class HomeFragment extends Fragment {
                         tempMinimal = makeFromFaringate(tempMin);
 
 
-                        binding.tempMain.setText(String.valueOf(temperature) + "°C");
+                        binding.tempC.setText(String.valueOf(temperature) + "°C");
                         binding.maxMinTemp.setText(String.valueOf(tempMaximal) + " °C↑ \n" + String.valueOf(tempMinimal) + " °C↓");
 
                         binding.cityName.setText(binding.inputCity.getText().toString());
@@ -190,7 +189,7 @@ public class HomeFragment extends Fragment {
                         binding.pressure.setText(main_model.getPressure() + "\nmBar");
 
                         binding.wind.setText(wind_model.getSpeed() + " m/s");
-                        binding.cloudy.setText(clouds_model.getAll() + " %");
+                        binding.cloud.setText(clouds_model.getAll() + " %");
 
                         binding.sunrise.setText(String.valueOf(getCurrDateTime(sys_model.getSunrise())));
                         binding.sunset.setText(String.valueOf(getCurrDateTime(sys_model.getSunset())));

@@ -11,7 +11,7 @@ public class Model {
     Main model;
 
     @SerializedName("wind")
-    Wind wind_model;
+    wind wind_model;
 
     @SerializedName("sys")
     Sys sys_model;
@@ -29,7 +29,7 @@ public class Model {
         return model;
     }
 
-    public Wind getWind_model() {
+    public wind getWind_model() {
         return wind_model;
     }
 

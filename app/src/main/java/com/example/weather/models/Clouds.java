@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Clouds {
     @SerializedName("all")
-    private long all;
+    private int all;
 
-    public long getAll() {
+    public int getAll() {
         return all;
     }
 }

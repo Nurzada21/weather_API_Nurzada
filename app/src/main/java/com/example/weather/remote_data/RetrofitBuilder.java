@@ -4,24 +4,28 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitBuilder {
-    private static WeatherApi instance;
+    private RetrofitBuilder(){
 
-    private RetrofitBuilder() {
     }
+    private static WeatherApi instance;
+    public static WeatherApi getInstance(){
+        if (instance == null)
 
-    public static WeatherApi getInstance() {
-        if (instance == null) {
-            instance = initInstance();
+        {
+            instance = initIntance();
+
         }
         return instance;
     }
-
-    private static WeatherApi initInstance() {
+    private static WeatherApi initIntance()
+    {
         return new Retrofit
                 .Builder()
                 .baseUrl("https://api.openweathermap.org")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(WeatherApi.class);
+
+
     }
 }
